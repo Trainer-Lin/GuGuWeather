@@ -1,5 +1,6 @@
 package ui.place
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
@@ -19,6 +20,7 @@ class PlaceViewModel: ViewModel() {
     }//监视数据变化
 
     fun searchPlace(query: String){
+        Log.d("FUCK" , "I AM FUCKING SEARCHING NOW!!!")
         _placeLiveData.value = query
     }//给UI层用的
 

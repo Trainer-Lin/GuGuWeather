@@ -1,5 +1,6 @@
 package ui.place
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,11 +23,13 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.d("FUCK" , "onCreateViewHolderSuccess")
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.place_item , parent , false)
         return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("FUCK" , "onBindViewHolderSuccess")
         val place = placeList[position]
         holder.placeName.text = place.name
         holder.placeAddress.text = place.address
