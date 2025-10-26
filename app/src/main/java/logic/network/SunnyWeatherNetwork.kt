@@ -21,11 +21,18 @@ import kotlin.coroutines.suspendCoroutine
 
 object SunnyWeatherNetwork {
     private val placeService = ServiceCreator.create<PlaceService>()
-    suspend fun searchPlace(query: String) = placeService.getPlaces(query , SunnyWeatherApplication.TOKEN, "zh_CN").await()
+    private val weatherService = ServiceCreator.create<WeatherService>()
+
+    suspend fun searchPlace(query: String) = placeService.getPlaces(query).await()
+
+    suspend fun searchRealtimeWeather(lng: String, lat: String) = weatherService.getRealtimeWeather(lng,lat).await()
+
+    suspend fun searchDailyWeather(lng: String, lat: String) = weatherService.getDailyWeather(lng, lat).await()
 
     private suspend fun <T> Call<T>.await(): T{
         return suspendCoroutine {
-            continuation -> enqueue(
+            continuation ->
+            enqueue(
                 object: Callback<T>{
                     override fun onResponse(p0: Call<T>, p1: Response<T>) {
                         val body = p1.body() //返回信息的正文
@@ -41,5 +48,7 @@ object SunnyWeatherNetwork {
         }//最终以从网络获得的Callback的body作为返回值
 
     }
+
+
 
 }

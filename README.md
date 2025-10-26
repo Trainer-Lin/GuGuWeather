@@ -12,7 +12,6 @@
 - **语言**: Kotlin
 - **架构**: MVVM
 - **网络**: Retrofit, OkHttp
-- **采用API接口**:  https://api.caiyunapp.com/v2.6/$Token/101.6656,39.2072/realtime
 - **Token**: Y5H90JK8UASwnmel
 - **本地存储**: Room
 - **响应式编程**: LiveData, ViewModel, Coroutine

@@ -12,7 +12,9 @@ TODO: 写一个完整的Retrofit类
 */
 
 object ServiceCreator {
-    private const val BASE_URL =  "https://api.caiyunapp.com/v2/"
+
+    //https://api.caiyunapp.com/v2/place?query=$query token=Y5H90JK8UASwnmel
+    private const val BASE_URL =  "https://api.caiyunapp.com/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

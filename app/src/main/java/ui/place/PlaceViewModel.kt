@@ -15,9 +15,25 @@ import logic.model.Place
 class PlaceViewModel: ViewModel() {
     private val _placeLiveData = MutableLiveData<String>() //内部私有可变变量
     val placeList = ArrayList<Place>() //给UI层用的
+
+
     val placeLiveData = _placeLiveData.switchMap {
-        query -> Repository.searchPlace(query)
+        query ->
+        Log.d("Net_work" , "switchMap triggered with $query")
+        Repository.searchPlace(query)
+
     }//监视数据变化
+
+    init {
+        // 测试switchMap是否工作
+        _placeLiveData.observeForever { value ->
+            Log.d("Net_work", "_placeLiveData changed to: $value")
+        }
+
+        placeLiveData.observeForever { result ->
+            Log.d("Net_work", "placeLiveData emitted: $result")
+        }
+    }
 
     fun searchPlace(query: String){
         Log.d("FUCK" , "I AM FUCKING SEARCHING NOW!!!")

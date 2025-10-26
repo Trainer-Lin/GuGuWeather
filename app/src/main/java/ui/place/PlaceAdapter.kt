@@ -1,5 +1,6 @@
 package ui.place
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sunnyweather.R
 import com.example.sunnyweather.SunnyWeatherApplication.Companion.context
 import logic.model.Place
+import logic.model.Weather
 import org.w3c.dom.Text
 
 //TODO: 标准的实现Adapter 我懒得写注释了
@@ -25,7 +27,21 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("FUCK" , "onCreateViewHolderSuccess")
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.place_item , parent , false)
-        return ViewHolder(itemView)
+
+        val holder = ViewHolder(itemView)
+        holder.itemView.setOnClickListener {
+            val intent = Intent(parent.context, Weather::class.java).apply{
+                val position = holder.adapterPosition
+                val place = placeList[position]
+                putExtra("location_lng", place.location.lng)
+                putExtra("location_lat", place.location.lat)
+                putExtra("place_name", place.name)
+            }
+            fragment.startActivity(intent)
+            fragment.activity?.finish()
+        }
+
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

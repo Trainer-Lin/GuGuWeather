@@ -45,9 +45,12 @@ class PlaceFragment: Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d("FUCK" , "onViewCreatedSuccess")
+
         val context = requireContext() //在onViewCreated里获取context的方式
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
+
         Log.d("FUCK" , "${R.id.recyclerView}")
+
         val searchPlaceEdit: EditText = view.findViewById(R.id.searchPlaceEdit)
         val bgImageView: ImageView = view.findViewById(R.id.bgImageView)
 
