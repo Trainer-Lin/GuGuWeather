@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <fragment
         android:id="@+id/placeFragment"
-        android:name="ui.place.PlaceFragment"
+        android:name="com.example.sunnyweather.ui.place.PlaceFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="MissingClass" />

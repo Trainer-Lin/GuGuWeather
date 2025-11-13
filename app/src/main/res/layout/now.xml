@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id = "@+id/now"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="530dp"
+    android:background="@drawable/leavesbackground"
+    android:orientation="vertical">
 
     <!--写标题布局-->
     <FrameLayout
         android:id = "@+id/titleLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="70dp"
         tools:ignore="UselessParent">
 
         <TextView
-            android:id = "@+id/placeName"
-            android:layout_width="match_parent"
+            android:id="@+id/placeName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="60dp"
-            android:layout_marginEnd="60dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
             android:singleLine="true"
-            android:ellipsize="middle"
-            android:textColor="#fff"
-            android:textSize="22sp"/>
+            android:textColor="#F0E7EA"
+            android:textSize="30sp" />
     </FrameLayout>
 
     <LinearLayout
@@ -36,8 +41,9 @@
             android:id = "@+id/currentTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize = "70sp"
-            android:textColor="#fff"/>
+            android:layout_gravity="center"
+            android:textSize = "80sp"
+            android:textColor="#F0E7EA"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,7 +55,7 @@
                 android:id = "@+id/currentSky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#fff"
+                android:textColor="#F0E7EA"
                 android:textSize="18sp" />
 
             <TextView
@@ -57,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="|"
                 android:layout_marginStart="13dp"
-                android:textColor="#fff"
+                android:textColor="#F0E7EA"
                 android:textSize="18sp"/>
 
             <TextView
@@ -65,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:textColor="#fff"
+                android:textColor="#F0E7EA"
                 android:textSize="18sp"/>
 
         </LinearLayout>
