@@ -111,7 +111,7 @@ class WeatherActivity : AppCompatActivity() {
     }
 
     //用于展示天气信息的函数
-    private fun showWeatherInfo(weather: Weather){
+    private fun showWeatherInfo(weather: Weather) {
         //Toast.makeText(this, "Oh,hi So you get here", Toast.LENGTH_SHORT).show()
 
         //先赋值，然后判空用Toast打印看哪个是空的
@@ -134,31 +134,30 @@ class WeatherActivity : AppCompatActivity() {
         val realtime = weather.realtime //反正写到后面发现复用率高了自己就会来写这个
 
         placeName.text = viewModel.placeName
-        Toast.makeText(this, "placeName is ${viewModel.placeName}", Toast.LENGTH_SHORT).show()
         currentTemp.text = "${realtime.temperature}℃"
-        currentSky.text =realtime.skycon
+        currentSky.text = realtime.skycon
         currentAQI.text = "空气指数${realtime.airQuality.aqi.chn.toInt()}" //利用viewModel获取到的数据更新UI
 //取消以下注释
 
-       //nowLayout.setBackgroundResource(R.drawable.leavesbackground) //根据skycon设置对应的背景图
+        //nowLayout.setBackgroundResource(R.drawable.leavesbackground) //根据skycon设置对应的背景图
         forecastLayout.removeAllViews() //刷新未来天气信息 这一步是删除原来的信息 下面所做的就是更新数据
         val minSize = minOf(daily.skycon.size, daily.temperature.size)
 
-        for(i in 0 until minSize){ //反正用daily的size就行了 别管daily还是temperature
-            Toast.makeText(this,"$i", Toast.LENGTH_SHORT).show()
-
+        for (i in 0 until minSize) { //反正用daily的size就行了 别管daily还是temperature
             val skycon = daily.skycon[i]
-          //  Toast.makeText(this, "skycon is ${skycon.value}", Toast.LENGTH_SHORT).show()
+            //  Toast.makeText(this, "skycon is ${skycon.value}", Toast.LENGTH_SHORT).show()
             val temp = daily.temperature[i] //获取遍历到的天气信息
             //Toast.makeText(this, "temp is ${temp.min} ~ ${temp.max}", Toast.LENGTH_SHORT).show()
 
-            val view = LayoutInflater.from(this).inflate(R.layout.forecast_item, forecastLayout, false) //膨胀一个子视图
+            val view = LayoutInflater.from(this)
+                .inflate(R.layout.forecast_item, forecastLayout, false) //膨胀一个子视图
             //Toast.makeText(this, "还在动！", Toast.LENGTH_SHORT).show()
 
             val dateInfo: TextView = view.findViewById(R.id.dateInfo)
             val skyIcon: ImageView = view.findViewById(R.id.skyIcon)
             val skyInfo: TextView = view.findViewById(R.id.skyInfo)
-            val temperatureInfo: TextView = view.findViewById(R.id.tempInfo) //一定要用当前view的findViewById动态获取控件
+            val temperatureInfo: TextView =
+                view.findViewById(R.id.tempInfo) //一定要用当前view的findViewById动态获取控件
 
             //dateInfo.text = "2025-11-12"
             try {
@@ -176,7 +175,7 @@ class WeatherActivity : AppCompatActivity() {
             }
 
             val sky = getSky(skycon.value) //获取一个sky对象
-           skyIcon.setImageResource(sky.icon) //设置一个小图标, 就说每日预报里最左边那个
+            skyIcon.setImageResource(sky.icon) //设置一个小图标, 就说每日预报里最左边那个
             skyInfo.text = sky.info //"晴" 等天气信息
             temperatureInfo.text = "${temp.min} ~ ${temp.max}" //温度
             forecastLayout.addView(view) //上面是在填充一个子项 这个是把子项添加到forecastLayout中
@@ -194,7 +193,6 @@ class WeatherActivity : AppCompatActivity() {
         ultravioletText.setTextColor(Color.BLACK)
         carWashingText.setTextColor(Color.BLACK)
 
-        Toast.makeText(this, "${coldRiskText.text}", Toast.LENGTH_SHORT).show() //一开始在搜索栏不可见 点进去给他显示出来
     }
 
     private fun makeStatusBarTransparent() {
